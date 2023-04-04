@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import './App.css'
+import Auth from './Pages/auth/auth';
+import CreateRecipe from './Pages/create-recipe/create-recipe';
+import Navbar from './components/navbar';
+import { Home } from './Pages/home/home';
+import { SavedRecipes } from './Pages/saved-recipes/saved-recipes';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='auth' element={<Auth />} />
+          <Route path='create-recipe' element={<CreateRecipe />} />
+          <Route path='saved-recipes' element={<SavedRecipes />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
